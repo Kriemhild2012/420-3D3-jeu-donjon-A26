@@ -1,4 +1,7 @@
-from ennemi import Ennemi
+from entites.ennemi_agressif import EnnemiAgressif
+from entites.ennemi_aleatoire import EnnemiAleatoire
+from entites.ennemi_defensif import EnnemiDefensif
+from entites.ennemi_furtif import EnnemiFurtif
 
 class Jeu:
     def __init__(self):
@@ -7,9 +10,9 @@ class Jeu:
         self.heros_attaque = 20
 
         self.ennemis = [
-            Ennemi("Goblin", 50, 10, "agressif"),
-            Ennemi("Dragon", 100, 20, "defensif"),
-            Ennemi("Voleur", 30, 15, "furtif"),
+            EnnemiAgressif("Goblin", 50, 10),
+            EnnemiDefensif("Dragon", 100, 20),
+            EnnemiFurtif("Voleur", 30, 15),
         ]
 
     def ennemis_vivants(self):
@@ -28,7 +31,7 @@ class Jeu:
             print("\nEnnemis :")
             vivants = self.ennemis_vivants()
             for i, ennemi in enumerate(vivants, 1):
-                print(f"  [{i}] {ennemi.nom} (HP: {ennemi.hp}/{ennemi.hp_max}) — {ennemi.comportement}")
+                print(f"  [{i}] {ennemi.nom} (HP: {ennemi.hp}/{ennemi.hp_max}) — {type(ennemi).__name__}")
             print()
 
             # Demander l'action du héros
@@ -87,8 +90,11 @@ class Jeu:
 
             # Adaptation des comportements
             for ennemi in self.ennemis_vivants():
-                if ennemi.hp < ennemi.hp_max * 0.3 and ennemi.comportement != "defensif":
-                    ennemi.comportement = "defensif"
+                if ennemi.hp < ennemi.hp_max * 0.3 and type(ennemi).__name__ != "EnnemiDefensif":
+                    
+
+
+                    
                     print(f"  ⚡ {ennemi.nom} change de tactique — il devient Défensif !")
 
             print()
