@@ -1,7 +1,7 @@
-from entites.ennemi_agressif import EnnemiAgressif
-from entites.ennemi_defensif import EnnemiDefensif
-from entites.ennemi_aleatoire import EnnemiAleatoire
-from entites.ennemi_furtif import EnnemiFurtif
+from modeles.ennemi_agressif import EnnemiAgressif
+from modeles.ennemi_defensif import EnnemiDefensif
+from modeles.ennemi_aleatoire import EnnemiAleatoire
+from modeles.ennemi_furtif import EnnemiFurtif
 
 ennemis = [
     EnnemiAgressif("Goblin",  hp=50,  attaque=8),
