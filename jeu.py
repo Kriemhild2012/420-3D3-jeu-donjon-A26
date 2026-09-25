@@ -10,3 +10,8 @@ ennemis = [
     Ennemi("Spectre", hp=40,  attaque=10, comportement=ComportementAleatoire()),
     Ennemi("Voleur",  hp=30,  attaque=10, comportement=ComportementFurtif()),
 ]
+
+# Règle de jeu : tout ennemi sous 30% de HP devient défensif
+for ennemi in ennemis:
+    if ennemi.hp < ennemi.hp_max * 0.3:
+        ennemi.set_comportement(ComportementDefensif())
