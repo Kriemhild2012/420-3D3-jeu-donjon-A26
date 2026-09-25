@@ -1,11 +1,10 @@
-# entites/ennemi_defensif.py
-from entites.ennemi import Ennemi
+# models/comportements/comportement_defensif.py
+from modeles.comportements.comportement import Comportement
 
 
-class EnnemiDefensif(Ennemi):
-    """Attaque si ses HP sont au-dessus de 50%, défend sinon."""
+class ComportementDefensif(Comportement):
 
-    def agir(self) -> str:
-        if self.hp < self.hp_max * 0.5:
+    def agir(self, ennemi) -> str:
+        if ennemi.hp < ennemi.hp_max * 0.5:
             return "defend"
         return "attaque"

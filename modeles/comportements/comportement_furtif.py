@@ -1,5 +1,5 @@
 # models/comportements/comportement_furtif.py
-from modeles.comportement import Comportement
+from modeles.comportements.comportement import Comportement
 
 
 class ComportementFurtif(Comportement):

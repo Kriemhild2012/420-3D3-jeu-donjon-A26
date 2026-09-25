@@ -1,9 +1,8 @@
-# entites/ennemi_agressif.py
-from entites.ennemi import Ennemi
+# models/comportements/comportement_agressif.py
+from modeles.comportements.comportement import Comportement
 
 
-class EnnemiAgressif(Ennemi):
-    """Attaque à chaque tour, sans exception."""
+class ComportementAgressif(Comportement):
 
-    def agir(self) -> str:
+    def agir(self, ennemi) -> str:
         return "attaque"

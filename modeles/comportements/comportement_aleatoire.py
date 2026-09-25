@@ -1,10 +1,9 @@
-# entites/ennemi_aleatoire.py
+# models/comportements/comportement_aleatoire.py
 import random
-from entites.ennemi import Ennemi
+from modeles.comportements.comportement import Comportement
 
 
-class EnnemiAleatoire(Ennemi):
-    """Choisit aléatoirement entre attaquer et défendre."""
+class ComportementAleatoire(Comportement):
 
-    def agir(self) -> str:
+    def agir(self, ennemi) -> str:
         return random.choice(["attaque", "defend"])

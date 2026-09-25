@@ -1,19 +1,25 @@
-# entites/ennemi.py
-from abc import ABC, abstractmethod
+# models/ennemi.py
+from modeles.comportements.comportement import Comportement
 
 
-class Ennemi(ABC):
+class Ennemi:
 
-    def __init__(self, nom: str, hp: int, attaque: int) -> None:
+    def __init__(self, nom: str, hp: int, attaque: int,
+                 comportement: Comportement) -> None:
         self.nom = nom
         self.hp = hp
         self.hp_max = hp
         self.attaque = attaque
+        self._comportement = comportement   # ← composition
 
-    @abstractmethod
     def agir(self) -> str:
-        """Décide l'action de cet ennemi pour ce tour."""
-        pass
+        return self._comportement.agir(self)   # ← délégation
+
+    def set_comportement(self, comportement: Comportement) -> None:
+        self._comportement = comportement       # ← remplacement
+
+    def get_comportement(self) -> Comportement:
+        return self._comportement
 
     def recevoir_degats(self, degats: int) -> None:
         self.hp = max(0, self.hp - degats)

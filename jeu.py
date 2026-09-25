@@ -1,11 +1,12 @@
-from modeles.ennemi_agressif import EnnemiAgressif
-from modeles.ennemi_defensif import EnnemiDefensif
-from modeles.ennemi_aleatoire import EnnemiAleatoire
-from modeles.ennemi_furtif import EnnemiFurtif
+from modeles.ennemi import Ennemi
+from modeles.comportements.comportement_agressif import ComportementAgressif
+from modeles.comportements.comportement_defensif import ComportementDefensif
+from modeles.comportements.comportement_aleatoire import ComportementAleatoire
+from modeles.comportements.comportement_furtif import ComportementFurtif
 
 ennemis = [
-    EnnemiAgressif("Goblin",  hp=50,  attaque=8),
-    EnnemiDefensif("Dragon",  hp=100, attaque=12),
-    EnnemiAleatoire("Spectre", hp=40, attaque=10),
-    EnnemiFurtif("Voleur",   hp=30,  attaque=10),
+    Ennemi("Goblin",  hp=50,  attaque=8,  comportement=ComportementAgressif()),
+    Ennemi("Dragon",  hp=100, attaque=12, comportement=ComportementDefensif()),
+    Ennemi("Spectre", hp=40,  attaque=10, comportement=ComportementAleatoire()),
+    Ennemi("Voleur",  hp=30,  attaque=10, comportement=ComportementFurtif()),
 ]
