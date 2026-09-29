@@ -81,16 +81,6 @@ class Jeu:
             for ennemi, action_ennemi in actions_ennemis.items():
                 if not ennemi.est_vivant():
                     continue
-                """
-                if action_ennemi == "attaque_berserker":
-                    if action_heros == "defend":
-                        degats = (ennemi.attaque // 2) * 2
-                        print(f"  → {ennemi.nom} attaque deux fois — votre défense est percé ! {degats} dégâts reçus.")
-                    else:
-                        degats = ennemi.attaque * 2
-                        print(f"  → {ennemi.nom} vous attaque deux fois pour {degats} dégâts !")
-                    self.heros_hp = max(0, self.heros_hp - degats)
-                """
 
                 if action_ennemi == "attaque":
                     if action_heros == "defend":
