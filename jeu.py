@@ -5,6 +5,7 @@ from modeles.comportements.comportement_aleatoire import ComportementAleatoire
 from modeles.comportements.comportement_furtif import ComportementFurtif
 from modeles.comportements.comportement_berserker import ComportementBerserker
 from modeles.actions.action_defense import ActionDefense
+from modeles.regles_adaptation import devenir_defensif_si_faible, devenir_agressif_si_fort, devenir_berserker_si_faible
 
 
 class Jeu:
@@ -14,8 +15,8 @@ class Jeu:
         self.heros_attaque = 20
 
         self.ennemis = [
-            Ennemi("Goblin",  hp=50,  attaque=8,  comportement=ComportementAgressif()),
-            Ennemi("Dragon",  hp=100, attaque=12, comportement=ComportementDefensif()),
+            Ennemi("Goblin",  hp=50,  attaque=8,  comportement=ComportementAgressif(), regles_adaptation=[devenir_berserker_si_faible]),
+            Ennemi("Dragon",  hp=100, attaque=12, comportement=ComportementDefensif(), regles_adaptation=[devenir_defensif_si_faible, devenir_agressif_si_fort]),
             Ennemi("Spectre", hp=40,  attaque=10, comportement=ComportementAleatoire()),
             Ennemi("Voleur",  hp=30,  attaque=10, comportement=ComportementFurtif()),
         ]
@@ -83,6 +84,7 @@ class Jeu:
                 self.heros_hp, msg = action.appliquer(ennemi, self.heros_hp, action_heros)
                 print(msg)
 
+            """
             # Règle de jeu : tout ennemi sous 50% de HP devient berserker
             for ennemi in self.ennemis:
                 if not ennemi.est_vivant():
@@ -99,6 +101,7 @@ class Jeu:
                 if ennemi.hp < ennemi.hp_max * 0.3 and type(ennemi.get_comportement()) != ComportementDefensif:
                     ennemi.set_comportement(ComportementDefensif())
                     print(f"  ⚡ {ennemi.nom} change de tactique — il devient Défensif !")
+            """
 
             print()
             tour += 1
