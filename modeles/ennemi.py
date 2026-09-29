@@ -1,5 +1,6 @@
 # models/ennemi.py
 from modeles.comportements.comportement import Comportement
+from modeles.actions.action import Action
 
 
 class Ennemi:
@@ -12,7 +13,7 @@ class Ennemi:
         self.attaque = attaque
         self._comportement = comportement   # ← composition
 
-    def agir(self) -> str:
+    def agir(self) -> Action:
         return self._comportement.agir(self)   # ← délégation
 
     def set_comportement(self, comportement: Comportement) -> None:
